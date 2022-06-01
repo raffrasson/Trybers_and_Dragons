@@ -3,12 +3,16 @@ import { EnergyType } from '../Energy';
 
 class Mage extends Archetype {
   public energyType: EnergyType = 'mana';
-  public mageInstances = 0;
+  private static mageInstances = 0;
 
   constructor(name: string) {
     super(name);
     this.energyType = 'mana';
-    this.mageInstances += 1;
+  }
+
+  static createdArchetypeInstances(): number {
+    Mage.mageInstances += 1;
+    return Mage.mageInstances;
   }
 }
 
